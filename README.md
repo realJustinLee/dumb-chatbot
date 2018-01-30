@@ -1,5 +1,7 @@
 # DUMB 聊天机器人
-DUMB 聊天机器人全称Dumb Unique Maladroit Bot. 是使用 Pytorch 实现并使用康奈尔的某电影台词库训练的聊天机器人.
+DUMB 聊天机器人全称Dumb Unique Maladroit Bot. 是使用 Pytorch 实现并使用康奈尔电影台词库训练的聊天机器人.
+
+## Github 链接
 
 ## Requirements
 - Python 2.7
