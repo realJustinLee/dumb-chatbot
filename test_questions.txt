@@ -1,0 +1,5 @@
+hi .
+what's your name ?
+how are you ?
+where are you from ?
+are you happy today ?
