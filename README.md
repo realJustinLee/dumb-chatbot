@@ -2,10 +2,10 @@
 DUMB 聊天机器人全称Dumb Unique Maladroit Bot. 是使用 Pytorch 实现并使用康奈尔电影台词库训练的聊天机器人.
 
 ## Github 链接
-- https://github.com/Great-Li-Xin/dumb-chatbot
+- [dumb-chatbot](https://github.com/Great-Li-Xin/dumb-chatbot)
 
 ## 博客文章链接
-- 
+- [DUMB 聊天机器人](https://great-li-xin.github.io/2018/01/30/Dumb-Chatbot/)
 
 ## Requirements
 - Python 2.7
@@ -36,7 +36,7 @@ python chatbot.py
 ```
 
 #### 测试样例
-```shell
+```
 > hi .
 bot: hi .
 > what's your name ?
