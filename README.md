@@ -12,20 +12,20 @@ DUMB 聊天机器人全称Dumb Unique Maladroit Bot. 是使用 Pytorch 实现并
 
 ## 使用方法
 ### 数据清洗
-```python
+```
 python preprocess.py
 ```
 这个脚本会在`./data`目录创建`dialogue_corpus.txt`.
 
 ### 训练模型
-```python
+```
 python train.py
 ```
 调参可以在`config.json`里面进行.
 用我自己的电脑(GTX970M)训练的话, 大概需要四个半小时. 使用CPU训练请至少准备一个星期时间.
 
 ### 测试和运行
-```python
+```
 python chatbot.py
 ```
 
@@ -34,7 +34,7 @@ python chatbot.py
 > hi .
 bot: hi .
 > what's your name ?
-bot: jacob .
+bot: vector frankenstein .
 > how are you ?
 bot: fine .
 > where are you from ?
