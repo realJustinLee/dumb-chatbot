@@ -32,7 +32,7 @@ def masked_cross_entropy(logits, target, length):
     Args:
         logits: A Variable containing a FloatTensor of size
             (batch, max_len, num_classes) which contains the
-            unnormalized probability for each class.
+            un-normalized probability for each class.
         target: A Variable containing a LongTensor of size
             (batch, max_len) which contains the index of the true
             class for each corresponding step.
