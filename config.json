@@ -30,6 +30,6 @@
   },
   "TEST": {
     "BOT_NAME": "bot",
-    "CKPT_EPOCH": 80000
+    "CKPT_EPOCH": 100000
   }
 }
