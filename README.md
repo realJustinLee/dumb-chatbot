@@ -42,7 +42,7 @@ python chatbot.py
 ``` text
 > hi .
 bot: hi .
-> what's your name ?
+> what is your name ?
 bot: vector frankenstein .
 > how are you ?
 bot: fine .
