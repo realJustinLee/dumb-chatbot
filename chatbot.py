@@ -24,7 +24,7 @@ def main():
         print('%s: %s' % (BOT_NAME, response))
         curr_sys = platform.system()
         if curr_sys == 'Linux':
-            os.system('echo %s | festival --tts' % response)
+            os.system('echo "%s" | festival --tts' % response)
         elif curr_sys == 'Darwin':
             os.system('say "%s" ' % response)
 
