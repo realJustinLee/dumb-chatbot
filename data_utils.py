@@ -14,7 +14,7 @@ USE_CUDA = config['TRAIN']['CUDA']
 
 DATA_PATH = config['DATA']['PATH']
 DIALOGUE_CORPUS = config['DATA']['DIALOGUE_CORPUS']
-# range of sentenct length
+# range of sentence length
 MIN_LENGTH = config['LOADER']['MIN_LENGTH']
 MAX_LENGTH = config['LOADER']['MAX_LENGTH']
 # least word count

@@ -69,8 +69,8 @@ class Seq2Seq(nn.Module):
         input_group = (input_var, [length])
         # outputs size (max_length, output_size)
         decoder_outputs = self.forward(input_group, teacher_forcing_ratio=0)
-        # topv, topi = decoder_outputs.data.topk(1, dim=1)
-        # decoder_index = topi.squeeze(1)
+        # top_v, top_i = decoder_outputs.data.top_k(1, dim=1)
+        # decoder_index = top_i.squeeze(1)
         # return decoder_index
         return decoder_outputs
 
@@ -163,7 +163,7 @@ class Decoder(nn.Module):
     def forward(self, input_seqs, last_hidden, encoder_ouputs):
         # input_seqs size (batch_size,)
         # last_hidden size (n_layers, batch_size, hidden_size)
-        # encoder_ouputs size (max_len, batch_size, hidden_size)
+        # encoder_outputs size (max_len, batch_size, hidden_size)
         batch_size = input_seqs.size(0)
         # embedded size (1, batch_size, hidden_size)
         embedded = self.embedding(input_seqs).unsqueeze(0)

@@ -24,13 +24,13 @@ def sequence_mask(sequence_length, max_len=None):
     return seq_range_expand < seq_length_expand
 
 
-def masked_cross_entropy(logits, target, length):
+def masked_cross_entropy(logic, target, length):
     length = Variable(torch.LongTensor(length))
     if USE_CUDA:
         length = length.cuda()
     """
     Args:
-        logits: A Variable containing a FloatTensor of size
+        logic: A Variable containing a FloatTensor of size
             (batch, max_len, num_classes) which contains the
             un-normalized probability for each class.
         target: A Variable containing a LongTensor of size
@@ -42,14 +42,14 @@ def masked_cross_entropy(logits, target, length):
         loss: An average loss value masked by the length.
     """
 
-    # logits_flat: (batch * max_len, num_classes)
-    logits_flat = logits.view(-1, logits.size(-1))
-    # log_probs_flat: (batch * max_len, num_classes)
-    log_probs_flat = functional.log_softmax(logits_flat)
+    # logic_flat: (batch * max_len, num_classes)
+    logic_flat = logic.view(-1, logic.size(-1))
+    # log_probability_flat: (batch * max_len, num_classes)
+    log_probability_flat = functional.log_softmax(logic_flat)
     # target_flat: (batch * max_len, 1)
     target_flat = target.view(-1, 1)
     # losses_flat: (batch * max_len, 1)
-    losses_flat = -torch.gather(log_probs_flat, dim=1, index=target_flat)
+    losses_flat = -torch.gather(log_probability_flat, dim=1, index=target_flat)
     # losses: (batch, max_len)
     losses = losses_flat.view(*target.size())
     # mask: (batch, max_len)
