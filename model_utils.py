@@ -135,7 +135,7 @@ class BotAgent(object):
     def response(self, question):
         input_var = self.build_input_var(question)
         if input_var is None:
-            return "sorry, I don 't know ."
+            return "Sorry, I don 't know ."
         decoder_output = self.model.response(input_var)
         decoder_output = decoder_output.squeeze(1)
         top_v, top_i = decoder_output.data.topk(1, dim=1)
