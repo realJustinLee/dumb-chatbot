@@ -4,7 +4,8 @@ import random
 import torch
 import torch.nn as nn
 import torch.nn.init as weight_init
-import torch.nn.functional as F
+import torch.nn.functional as func
+
 from torch.autograd import Variable
 from torch.nn.utils.rnn import pack_padded_sequence, pad_packed_sequence
 from custom_token import *
@@ -90,7 +91,7 @@ class Attn(nn.Module):
 
     def forward(self, hidden, encoder_outputs):
         attn_energies = self.batch_score(hidden, encoder_outputs)
-        return F.softmax(attn_energies).unsqueeze(1)
+        return func.softmax(attn_energies).unsqueeze(1)
 
     # faster
     def batch_score(self, hidden, encoder_outputs):
@@ -175,7 +176,7 @@ class Decoder(nn.Module):
         context = attn_weights.bmm(encoder_ouputs.transpose(0, 1))
         # concat_input size (batch_size, hidden_size * 2)
         concat_input = torch.cat((output.squeeze(0), context.squeeze(1)), 1)
-        concat_output = F.tanh(self.concat(concat_input))
+        concat_output = func.tanh(self.concat(concat_input))
         # output size (batch_size, output_size)
         output = self.out(concat_output)
         return output, hidden, attn_weights

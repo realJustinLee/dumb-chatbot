@@ -4,6 +4,7 @@ import json
 import re
 import random
 import torch
+
 from torch.autograd import Variable
 from custom_token import *
 

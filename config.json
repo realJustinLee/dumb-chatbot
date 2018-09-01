@@ -8,7 +8,8 @@
   "LOADER": {
     "MIN_LENGTH": 1,
     "MAX_LENGTH": 30,
-    "MIN_COUNT": 2
+    "MIN_COUNT": 2,
+    "IMPORT_FROM_CUDA": true
   },
   "TRAIN": {
     "CUDA": false,

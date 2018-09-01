@@ -1,7 +1,7 @@
 # coding=utf8
 import os
-
 import data_utils
+
 from custom_token import *
 from data_utils import Vocabulary
 from masked_cross_entropy import *
@@ -12,6 +12,7 @@ with open('config.json') as config_file:
 
 CHECKPOINT_PATH = config['TRAIN']['PATH']
 USE_CUDA = config['TRAIN']['CUDA']
+IMPORT_FROM_CUDA = config['LOADER']['IMPORT_FROM_CUDA']
 
 batch_size = config['TRAIN']['BATCH_SIZE']
 
@@ -76,7 +77,12 @@ def build_model(vocab_size, load_checkpoint=False, checkpoint_epoch=-1):
                 model_path = '%s%s_%d' % (CHECKPOINT_PATH, prefix, max(checkpoints))
 
         if model_path is not None and os.path.exists(model_path):
-            model.load_state_dict(torch.load(model_path))
+            if IMPORT_FROM_CUDA:
+                loaded = torch.load(model_path, map_location=lambda storage, loc: storage)
+            else:
+                loaded = torch.load(model_path)
+
+            model.load_state_dict(loaded)
             print('Load %s' % model_path)
 
     # print('Seq2Seq parameters:')
@@ -118,7 +124,7 @@ def load_vocabulary():
         vocab.index2word = index2word
         return vocab
     else:
-        raise ('not found %s' % CHECKPOINT_PATH + config['TRAIN']['VOCABULARY'])
+        raise Exception('not found %s' % CHECKPOINT_PATH + config['TRAIN']['VOCABULARY'])
 
 
 class BotAgent(object):
