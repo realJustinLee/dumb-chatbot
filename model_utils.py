@@ -10,7 +10,7 @@ from model import Seq2Seq, Encoder, Decoder
 with open('config.json') as config_file:
     config = json.load(config_file)
 
-CKPT_PATH = config['TRAIN']['PATH']
+CHECKPOINT_PATH = config['TRAIN']['PATH']
 USE_CUDA = config['TRAIN']['CUDA']
 
 batch_size = config['TRAIN']['BATCH_SIZE']
@@ -21,11 +21,11 @@ with open('test_questions.txt') as my_file:
         question_list.append(line[:-1])
 
 
-def model_evaluate(model, dataset, evaluate_num=10, auto_test=True):
+def model_evaluate(model, data_set, evaluate_num=10, auto_test=True):
     model.train(False)
     total_loss = 0.0
     for _ in range(evaluate_num):
-        input_group, target_group = dataset.random_test()
+        input_group, target_group = data_set.random_test()
         all_decoder_outputs = model(input_group, target_group, teacher_forcing_ratio=1)
         target_var, target_lens = target_group
         loss = masked_cross_entropy(
@@ -34,9 +34,9 @@ def model_evaluate(model, dataset, evaluate_num=10, auto_test=True):
             target_lens
         )
         total_loss += loss.data[0]
-        # format_output(dataset.vocabulary.index2word, input_group, target_group, all_decoder_outputs)
+        # format_output(data_set.vocabulary.index2word, input_group, target_group, all_decoder_outputs)
     if auto_test is True:
-        bot = BotAgent(model, dataset.vocabulary)
+        bot = BotAgent(model, data_set.vocabulary)
         for question in question_list:
             print('> %s' % question)
             print('bot: %s' % bot.response(question))
@@ -44,7 +44,7 @@ def model_evaluate(model, dataset, evaluate_num=10, auto_test=True):
     return total_loss / evaluate_num
 
 
-def build_model(vocab_size, load_ckpt=False, ckpt_epoch=-1):
+def build_model(vocab_size, load_checkpoint=False, checkpoint_epoch=-1):
     hidden_size = config['MODEL']['HIDDEN_SIZE']
     attn_method = config['MODEL']['ATTN_METHOD']
     n_encoder_layers = config['MODEL']['N_ENCODER_LAYERS']
@@ -58,22 +58,22 @@ def build_model(vocab_size, load_ckpt=False, ckpt_epoch=-1):
         tie_weights=config['MODEL']['TIE_WEIGHTS']
     )
     print(model)
-    if load_ckpt is True and os.path.exists(CKPT_PATH) is True:
+    if load_checkpoint is True and os.path.exists(CHECKPOINT_PATH) is True:
         # load checkpoint
         prefix = config['TRAIN']['PREFIX']
         model_path = None
-        if ckpt_epoch >= 0:
-            model_path = '%s%s_%d' % (CKPT_PATH, prefix, ckpt_epoch)
+        if checkpoint_epoch >= 0:
+            model_path = '%s%s_%d' % (CHECKPOINT_PATH, prefix, checkpoint_epoch)
         else:
             # use last checkpoint
-            ckpts = []
-            for root, dirs, files in os.walk(CKPT_PATH):
-                for fname in files:
-                    fname_sp = fname.split('_')
-                    if len(fname_sp) == 2:
-                        ckpts.append(int(fname_sp[1]))
-            if len(ckpts) > 0:
-                model_path = '%s%s_%d' % (CKPT_PATH, prefix, max(ckpts))
+            checkpoints = []
+            for root, dirs, files in os.walk(CHECKPOINT_PATH):
+                for f_name in files:
+                    f_name_sp = f_name.split('_')
+                    if len(f_name_sp) == 2:
+                        checkpoints.append(int(f_name_sp[1]))
+            if len(checkpoints) > 0:
+                model_path = '%s%s_%d' % (CHECKPOINT_PATH, prefix, max(checkpoints))
 
         if model_path is not None and os.path.exists(model_path):
             model.load_state_dict(torch.load(model_path))
@@ -88,27 +88,27 @@ def build_model(vocab_size, load_ckpt=False, ckpt_epoch=-1):
 
 
 def init_path():
-    if os.path.exists(CKPT_PATH) is False:
-        os.mkdir(CKPT_PATH)
+    if os.path.exists(CHECKPOINT_PATH) is False:
+        os.mkdir(CHECKPOINT_PATH)
 
 
 def save_model(model, epoch):
     init_path()
-    save_path = '%s%s_%d' % (CKPT_PATH, config['TRAIN']['PREFIX'], epoch)
+    save_path = '%s%s_%d' % (CHECKPOINT_PATH, config['TRAIN']['PREFIX'], epoch)
     torch.save(model.state_dict(), save_path)
 
 
 def save_vocabulary(vocabulary_list):
     init_path()
-    with open(CKPT_PATH + config['TRAIN']['VOCABULARY'], 'w') as file:
+    with open(CHECKPOINT_PATH + config['TRAIN']['VOCABULARY'], 'w') as file:
         for word, index in vocabulary_list:
             file.write('%s %d\n' % (word, index))
 
 
 def load_vocabulary():
-    if os.path.exists(CKPT_PATH + config['TRAIN']['VOCABULARY']):
+    if os.path.exists(CHECKPOINT_PATH + config['TRAIN']['VOCABULARY']):
         word2index = {}
-        with open(CKPT_PATH + config['TRAIN']['VOCABULARY']) as file:
+        with open(CHECKPOINT_PATH + config['TRAIN']['VOCABULARY']) as file:
             for line in file:
                 line_spl = line[:-1].split()
                 word2index[line_spl[0]] = int(line_spl[1])
@@ -118,7 +118,7 @@ def load_vocabulary():
         vocab.index2word = index2word
         return vocab
     else:
-        raise ('not found %s' % CKPT_PATH + config['TRAIN']['VOCABULARY'])
+        raise ('not found %s' % CHECKPOINT_PATH + config['TRAIN']['VOCABULARY'])
 
 
 class BotAgent(object):
@@ -132,13 +132,13 @@ class BotAgent(object):
             return "sorry, I don 't know ."
         decoder_output = self.model.response(input_var)
         decoder_output = decoder_output.squeeze(1)
-        topv, topi = decoder_output.data.topk(1, dim=1)
-        topi = topi.squeeze(1)
+        top_v, top_i = decoder_output.data.topk(1, dim=1)
+        top_i = top_i.squeeze(1)
         if USE_CUDA:
-            preidct_resp = topi.cpu().numpy()
+            predict_resp = top_i.cpu().numpy()
         else:
-            preidct_resp = topi.numpy()
-        resp_words = self.build_sentence(preidct_resp)
+            predict_resp = top_i.numpy()
+        resp_words = self.build_sentence(predict_resp)
         return resp_words
 
     def build_input_var(self, user_input):

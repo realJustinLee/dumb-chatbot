@@ -14,7 +14,7 @@ checkpoint_epoch = config['TEST']['CHECKPOINT_EPOCH']
 
 def main():
     vocab = load_vocabulary()
-    model = build_model(len(vocab.word2index), load_ckpt=True, ckpt_epoch=checkpoint_epoch)
+    model = build_model(len(vocab.word2index), load_checkpoint=True, checkpoint_epoch=checkpoint_epoch)
     bot = BotAgent(model, vocab)
     while True:
         user_input = raw_input('me: ')
