@@ -26,7 +26,7 @@ def main():
         if curr_sys == 'Linux':
             os.system('echo %s | festival --tts' % response)
         elif curr_sys == 'Darwin':
-            os.system('say &s' % response)
+            os.system('say "%s" ' % response)
 
 
 if __name__ == '__main__':
