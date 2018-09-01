@@ -34,13 +34,13 @@ def basic_tokenizer(sentence):
     return [w for w in words if w]
 
 
-def build_DataLoader(batch_size=32):
+def build_data_loader(batch_size=32):
     pairs = []
     length_range = range(MIN_LENGTH, MAX_LENGTH)
-    print('Loding Corpus.')
-    with open(DATA_PATH + DIALOGUE_CORPUS) as file:
+    print('Loading Corpus.')
+    with open(DATA_PATH + DIALOGUE_CORPUS) as my_file:
         i = 0
-        for line in file:
+        for line in my_file:
             i += 1
             pa, pb = line[:-1].split(' +++$+++ ')
             pa = pa.split()
@@ -130,8 +130,8 @@ class DataLoader(object):
 
         src_pairs = sorted(src_pairs, key=lambda s: len(s[1]))
 
-        train_decode_length, test_decoder_lenth = 0.0, 0.0
-        # choose items to put into testset
+        train_decode_length, test_decoder_length = 0.0, 0.0
+        # choose items to put into test set
         test_ids = random.sample(range(n_iter), n_test)
         for i in range(n_iter):
             batch_seq_pairs = sorted(src_pairs[i * batch_size: (i + 1) * batch_size], key=lambda s: len(s[0]),
@@ -145,12 +145,12 @@ class DataLoader(object):
             else:
                 # test data
                 self.test.append((input_group, target_group))
-                test_decoder_lenth += decode_length
+                test_decoder_length += decode_length
 
         self.train_data_len = len(self.data)
         self.test_data_len = len(self.test)
         mean_train_decode_len = train_decode_length / self.train_data_len
-        mean_test_decode_len = test_decoder_lenth / self.test_data_len
+        mean_test_decode_len = test_decoder_length / self.test_data_len
         print('mean decode length: (%.2f, %.2f)' % (mean_train_decode_len, mean_test_decode_len))
 
     def __getitem__(self, index):

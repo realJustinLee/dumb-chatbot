@@ -1,14 +1,11 @@
 # coding=utf8
 import os
-import sys
-import json
-import random
-import torch
+
 import data_utils
-from model import Seq2Seq, Encoder, Decoder
+from custom_token import *
 from data_utils import Vocabulary
 from masked_cross_entropy import *
-from custom_token import *
+from model import Seq2Seq, Encoder, Decoder
 
 with open('config.json') as config_file:
     config = json.load(config_file)
@@ -19,8 +16,8 @@ USE_CUDA = config['TRAIN']['CUDA']
 batch_size = config['TRAIN']['BATCH_SIZE']
 
 question_list = []
-with open('test_questions.txt') as file:
-    for line in file:
+with open('test_questions.txt') as my_file:
+    for line in my_file:
         question_list.append(line[:-1])
 
 

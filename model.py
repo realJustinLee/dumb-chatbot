@@ -58,8 +58,8 @@ class Seq2Seq(nn.Module):
                 decoder_input = target_var[t]
             else:
                 # decoder_output = F.log_softmax(decoder_output)
-                topv, topi = decoder_output.data.topk(1, dim=1)
-                decoder_input = Variable(topi.squeeze(1))
+                top_v, top_i = decoder_output.data.topk(1, dim=1)
+                decoder_input = Variable(top_i.squeeze(1))
 
         return all_decoder_outputs
 

@@ -1,13 +1,11 @@
 # coding=utf8
-import os
-import json
 import math
 import time
-import torch
-import torch.nn as nn
+
 from torch import optim
 from torch.nn.utils import clip_grad_norm
-from data_utils import build_DataLoader
+
+from data_utils import build_data_loader
 from masked_cross_entropy import *
 from model_utils import build_model, save_model, model_evaluate, save_vocabulary
 
@@ -26,27 +24,27 @@ save_every = print_every * 10
 
 
 def main():
-    dataset = build_DataLoader(batch_size=batch_size)
-    vocabulary_list = sorted(dataset.vocabulary.word2index.items(), key=lambda x: x[1])
+    data_set = build_data_loader(batch_size=batch_size)
+    vocabulary_list = sorted(data_set.vocabulary.word2index.items(), key=lambda x: x[1])
     save_vocabulary(vocabulary_list)
-    vocab_size = dataset.get_vocabulary_size()
+    vocab_size = data_set.get_vocabulary_size()
     model = build_model(vocab_size)
     model_optimizer = optim.Adam(model.parameters(), lr=learning_rate)
 
     start = time.time()
-    dataset_len = len(dataset)
+    data_set_len = len(data_set)
     epoch = 0
     print_loss_total = 0.0
     print('Start Training.')
     while epoch < n_epochs:
         epoch += 1
-        input_group, target_group = dataset.random_batch()
+        input_group, target_group = data_set.random_batch()
         # zero gradients
         model_optimizer.zero_grad()
         # run seq2seq
         all_decoder_outputs = model(input_group, target_group, teacher_forcing_ratio=1)
         target_var, target_lens = target_group
-        # loss calculation and backpropagation
+        # loss calculation and back-propagation
         loss = masked_cross_entropy(
             all_decoder_outputs.transpose(0, 1).contiguous(),
             target_var.transpose(0, 1).contiguous(),
@@ -59,7 +57,7 @@ def main():
         model_optimizer.step()
 
         if epoch % print_every == 0:
-            test_loss = model_evaluate(model, dataset)
+            test_loss = model_evaluate(model, data_set)
             print_summary(start, epoch, math.exp(print_loss_total / print_every))
             print('Test PPL: %.4f' % math.exp(test_loss))
             print_loss_total = 0.0

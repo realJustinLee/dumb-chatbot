@@ -2,10 +2,7 @@
 import json
 import os
 import platform
-import random
-import torch
-import torch.nn as nn
-from torch.autograd import Variable
+
 from model_utils import load_vocabulary, build_model, BotAgent
 
 with open('config.json') as config_file:
