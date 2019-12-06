@@ -3,7 +3,8 @@ import math
 import time
 
 from torch import optim
-from torch.nn.utils import clip_grad_norm
+from torch.nn.utils import clip_grad_norm_
+
 from data_utils import build_data_loader
 from masked_cross_entropy import *
 from model_utils import build_model, save_model, model_evaluate, save_vocabulary
@@ -49,9 +50,9 @@ def main():
             target_var.transpose(0, 1).contiguous(),
             target_lens
         )
-        print_loss_total += loss.data[0]
+        print_loss_total += loss.data
         loss.backward()
-        clip_grad_norm(model.parameters(), clip)
+        clip_grad_norm_(model.parameters(), clip)
         # update parameters
         model_optimizer.step()
 
@@ -81,9 +82,9 @@ def as_minutes(s):
 def time_since(since, percent):
     now = time.time()
     s = now - since
-    es = s / (percent)
+    es = s / percent
     rs = es - s
-    return '%s (- %s)' % (as_minutes(s), as_minutes(rs))
+    return '%s (Time Remaining: %s)' % (as_minutes(s), as_minutes(rs))
 
 
 if __name__ == '__main__':

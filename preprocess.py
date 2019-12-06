@@ -1,5 +1,6 @@
 # coding=utf8
 import json
+
 import data_utils
 
 with open('config.json') as config_file:

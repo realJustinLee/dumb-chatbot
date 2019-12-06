@@ -1,7 +1,7 @@
 # coding=utf8
 import os
-import data_utils
 
+import data_utils
 from custom_token import *
 from data_utils import Vocabulary
 from masked_cross_entropy import *
@@ -34,7 +34,7 @@ def model_evaluate(model, data_set, evaluate_num=10, auto_test=True):
             target_var.transpose(0, 1).contiguous(),
             target_lens
         )
-        total_loss += loss.data[0]
+        total_loss += loss.data
         # format_output(data_set.vocabulary.index2word, input_group, target_group, all_decoder_outputs)
     if auto_test is True:
         bot = BotAgent(model, data_set.vocabulary)
@@ -51,7 +51,7 @@ def build_model(vocab_size, load_checkpoint=False, checkpoint_epoch=-1):
     n_encoder_layers = config['MODEL']['N_ENCODER_LAYERS']
     dropout = config['MODEL']['DROPOUT']
     encoder = Encoder(vocab_size, hidden_size, n_encoder_layers, dropout=dropout)
-    decoder = Decoder(hidden_size, vocab_size, attn_method, dropout=dropout)
+    decoder = Decoder(hidden_size, vocab_size, attn_method, n_encoder_layers, dropout=dropout)
     model = Seq2Seq(
         encoder=encoder,
         decoder=decoder,
@@ -162,7 +162,7 @@ class BotAgent(object):
         # append EOS token
         words_index.append(EOS_token)
         if len(words_index) > 0:
-            input_var = Variable(torch.LongTensor([words_index])).transpose(0, 1)
+            input_var = torch.tensor([words_index]).transpose(0, 1)
             if USE_CUDA:
                 input_var = input_var.cuda()
             # input_var size (length, 1)
@@ -177,7 +177,3 @@ class BotAgent(object):
                 break
             resp_words.append(self.vocab.index2word[index])
         return ' '.join(resp_words)
-
-
-if __name__ == '__main__':
-    pass

@@ -104,4 +104,6 @@ venv.bak/
 .mypy_cache/
 
 # Project specific
-.env-mysql
+checkpoint/*
+data/dialogue_corpus.txt
+venv2

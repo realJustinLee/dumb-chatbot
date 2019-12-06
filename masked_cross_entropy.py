@@ -1,9 +1,8 @@
 # coding=utf8
 import json
-import torch
 
+import torch
 from torch.nn import functional
-from torch.autograd import Variable
 
 with open('config.json') as config_file:
     config = json.load(config_file)
@@ -17,7 +16,7 @@ def sequence_mask(sequence_length, max_len=None):
     batch_size = sequence_length.size(0)
     seq_range = torch.arange(0, max_len).long()
     seq_range_expand = seq_range.unsqueeze(0).expand(batch_size, max_len)
-    seq_range_expand = Variable(seq_range_expand)
+    seq_range_expand = seq_range_expand.clone().detach()
     if sequence_length.is_cuda:
         seq_range_expand = seq_range_expand.cuda()
     seq_length_expand = (sequence_length.unsqueeze(1)
@@ -26,7 +25,7 @@ def sequence_mask(sequence_length, max_len=None):
 
 
 def masked_cross_entropy(logic, target, length):
-    length = Variable(torch.LongTensor(length))
+    length = torch.tensor(length)
     if USE_CUDA:
         length = length.cuda()
     """
@@ -46,7 +45,7 @@ def masked_cross_entropy(logic, target, length):
     # logic_flat: (batch * max_len, num_classes)
     logic_flat = logic.view(-1, logic.size(-1))
     # log_probability_flat: (batch * max_len, num_classes)
-    log_probability_flat = functional.log_softmax(logic_flat)
+    log_probability_flat = functional.log_softmax(logic_flat, dim=1)
     # target_flat: (batch * max_len, 1)
     target_flat = target.view(-1, 1)
     # losses_flat: (batch * max_len, 1)

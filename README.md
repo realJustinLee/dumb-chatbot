@@ -12,7 +12,8 @@ DUMB 聊天机器人全称Dumb Unique Maladroit Bot. 是使用 Pytorch 实现并
 
 ## Requirements
 - Python 2.7
-- Pytorch 0.4.1
+- PyTorch 1.3.1
+- torchvision 0.4.2
 - festival (Linux Environment)
 - say (macOS Environment)
 

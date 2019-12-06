@@ -1,11 +1,10 @@
 # coding=utf8
-import unicodedata
 import json
-import re
 import random
+import re
+
 import torch
 
-from torch.autograd import Variable
 from custom_token import *
 
 with open('config.json') as config_file:
@@ -185,8 +184,8 @@ class DataLoader(object):
         max_target_len = max(target_lens)
         target_padded = [self.pad_seq(s, max_target_len) for s in target_seqs]
         # Turn padded arrays into (batch_size x max_len) tensors, transpose into (max_len x batch_size)
-        input_var = Variable(torch.LongTensor(input_padded)).transpose(0, 1)
-        target_var = Variable(torch.LongTensor(target_padded)).transpose(0, 1)
+        input_var = torch.tensor(input_padded).transpose(0, 1)
+        target_var = torch.tensor(target_padded).transpose(0, 1)
         if USE_CUDA:
             input_var = input_var.cuda()
             target_var = target_var.cuda()
