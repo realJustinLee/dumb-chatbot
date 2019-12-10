@@ -1,7 +1,15 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project version="4">
   <component name="ChangeListManager">
-    <list default="true" id="ecfd1b54-34e0-43e3-ba65-938200f62446" name="Default" comment="" />
+    <list default="true" id="ecfd1b54-34e0-43e3-ba65-938200f62446" name="Default" comment="">
+      <change beforePath="$PROJECT_DIR$/.idea/dumb-chatbot.iml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/dumb-chatbot.iml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/misc.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/misc.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/data_utils.py" beforeDir="false" afterPath="$PROJECT_DIR$/data_utils.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/model.py" beforeDir="false" afterPath="$PROJECT_DIR$/model.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/preprocess.py" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/requirements.txt" beforeDir="false" afterPath="$PROJECT_DIR$/requirements.txt" afterDir="false" />
+    </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
     <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
@@ -11,6 +19,11 @@
     <SUITE FILE_PATH="coverage/dumb_chatbot$chatbot.coverage" NAME="chatbot Coverage Results" MODIFIED="1535798042174" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$" />
   </component>
   <component name="Git.Settings">
+    <option name="RECENT_BRANCH_BY_REPOSITORY">
+      <map>
+        <entry key="$PROJECT_DIR$" value="master" />
+      </map>
+    </option>
     <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$" />
   </component>
   <component name="ProjectId" id="1UaZ09r8bCsvjVgZbKYuIVvakL6" />
@@ -102,6 +115,8 @@
     </configuration>
     <recent_temporary>
       <list>
+        <item itemvalue="Python.train" />
+        <item itemvalue="Python.preprocess" />
         <item itemvalue="Python.chatbot" />
         <item itemvalue="Python.train" />
         <item itemvalue="Python.preprocess" />
@@ -135,6 +150,7 @@
       <workItem from="1575608622616" duration="5873000" />
       <workItem from="1575615035842" duration="3920000" />
       <workItem from="1575633385546" duration="805000" />
+      <workItem from="1575944561853" duration="1509000" />
     </task>
     <servers />
   </component>
@@ -174,10 +190,11 @@
     <state width="1638" height="294" key="GridCell.Tab.0.right/0.0.1680.1050@0.0.1680.1050" timestamp="1575649578398" />
     <state width="1038" height="579" key="GridCell.Tab.0.right/0.23.1680.1027/-321.-1440.2560.1440/2239.-1791.1080.1920@2239.-1791.1080.1920" timestamp="1575611083103" />
     <state width="1638" height="257" key="GridCell.Tab.0.right/0.23.1680.959/-321.-1417.2560.1417/2239.-1768.1080.1897@0.23.1680.959" timestamp="1575597598795" />
-    <state x="2337" y="-1555" key="SettingsEditor" timestamp="1575615146358">
-      <screen x="2239" y="-1791" width="1080" height="1920" />
+    <state x="152" y="141" key="SettingsEditor" timestamp="1575944832025">
+      <screen x="0" y="23" width="1680" height="958" />
     </state>
     <state x="2337" y="-1555" key="SettingsEditor/0.0.1680.1050/-321.-1440.2560.1440/2239.-1791.1080.1920@2239.-1791.1080.1920" timestamp="1575615146358" />
+    <state x="152" y="141" key="SettingsEditor/0.23.1680.958@0.23.1680.958" timestamp="1575944832025" />
     <state x="341" y="141" key="SettingsEditor/0.23.1680.959/-321.-1417.2560.1417/2239.-1768.1080.1897@0.23.1680.959" timestamp="1575596904143" />
   </component>
   <component name="com.intellij.coverage.CoverageDataManagerImpl">

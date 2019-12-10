@@ -37,7 +37,8 @@ class Seq2Seq(nn.Module):
         target_var, target_lens = target_group
         if target_var is None or target_lens is None:
             max_target_length = self.max_length
-            teacher_forcing_ratio = 0  # without teacher forcing
+            # without teacher forcing
+            teacher_forcing_ratio = 0
         else:
             max_target_length = max(target_lens)
 
@@ -131,7 +132,7 @@ class Encoder(nn.Module):
         # embedded size (max_len, batch_size, hidden_size)
         embedded = self.embedding(inputs_seqs)
         packed = pack_padded_sequence(embedded, input_lens)
-        outputs, hidden = self.gru(packed, hidden)
+        outputs, hidden = self.gru(torch.tensor(packed), hidden)
         outputs, output_lengths = pad_packed_sequence(outputs)
         if self.bidirectional:
             # sum bidirectional outputs
