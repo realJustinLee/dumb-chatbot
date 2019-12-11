@@ -17,7 +17,7 @@ def main():
     model = build_model(len(vocab.word2index), load_checkpoint=True, checkpoint_epoch=checkpoint_epoch)
     bot = BotAgent(model, vocab)
     while True:
-        user_input = raw_input('me: ')
+        user_input = input('me: ')
         if user_input.strip() == '':
             continue
         response = bot.response(user_input)
@@ -30,4 +30,7 @@ def main():
 
 
 if __name__ == '__main__':
-    main()
+    try:
+        main()
+    except KeyboardInterrupt as _:
+        print("You quit.")

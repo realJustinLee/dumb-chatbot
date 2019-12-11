@@ -16,10 +16,10 @@ IMPORT_FROM_CUDA = config['LOADER']['IMPORT_FROM_CUDA']
 
 batch_size = config['TRAIN']['BATCH_SIZE']
 
-question_list = []
-with open('test_questions.txt') as my_file:
-    for line in my_file:
-        question_list.append(line[:-1])
+questions = []
+with open('test_questions.txt') as question_file:
+    for line in question_file:
+        questions.append(line[:-1])
 
 
 def model_evaluate(model, data_set, evaluate_num=10, auto_test=True):
@@ -38,7 +38,7 @@ def model_evaluate(model, data_set, evaluate_num=10, auto_test=True):
         # format_output(data_set.vocabulary.index2word, input_group, target_group, all_decoder_outputs)
     if auto_test is True:
         bot = BotAgent(model, data_set.vocabulary)
-        for question in question_list:
+        for question in questions:
             print('> %s' % question)
             print('bot: %s' % bot.response(question))
     model.train(True)
@@ -48,10 +48,10 @@ def model_evaluate(model, data_set, evaluate_num=10, auto_test=True):
 def build_model(vocab_size, load_checkpoint=False, checkpoint_epoch=-1):
     hidden_size = config['MODEL']['HIDDEN_SIZE']
     attn_method = config['MODEL']['ATTN_METHOD']
-    n_encoder_layers = config['MODEL']['N_ENCODER_LAYERS']
+    num_encoder_layers = config['MODEL']['N_ENCODER_LAYERS']
     dropout = config['MODEL']['DROPOUT']
-    encoder = Encoder(vocab_size, hidden_size, n_encoder_layers, dropout=dropout)
-    decoder = Decoder(hidden_size, vocab_size, attn_method, n_encoder_layers, dropout=dropout)
+    encoder = Encoder(vocab_size, hidden_size, num_encoder_layers, dropout=dropout)
+    decoder = Decoder(hidden_size, vocab_size, attn_method, num_encoder_layers, dropout=dropout)
     model = Seq2Seq(
         encoder=encoder,
         decoder=decoder,
@@ -115,8 +115,8 @@ def load_vocabulary():
     if os.path.exists(CHECKPOINT_PATH + config['TRAIN']['VOCABULARY']):
         word2index = {}
         with open(CHECKPOINT_PATH + config['TRAIN']['VOCABULARY']) as file:
-            for line in file:
-                line_spl = line[:-1].split()
+            for _line in file:
+                line_spl = _line[:-1].split()
                 word2index[line_spl[0]] = int(line_spl[1])
         index2word = dict(zip(word2index.values(), word2index.keys()))
         vocab = Vocabulary()

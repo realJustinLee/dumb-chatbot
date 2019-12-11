@@ -88,4 +88,7 @@ def time_since(since, percent):
 
 
 if __name__ == '__main__':
-    main()
+    try:
+        main()
+    except KeyboardInterrupt as _:
+        print("You quit.")

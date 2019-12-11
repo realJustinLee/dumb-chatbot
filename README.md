@@ -1,17 +1,12 @@
 # DUMB 聊天机器人
-DUMB 聊天机器人全称Dumb Unique Maladroit Bot. 是使用 Pytorch 实现并使用康奈尔电影台词库训练的聊天机器人.
+DUMB 聊天机器人全称 Dumb Undereducated Maladroit Bot. 是使用 PyTorch 实现并使用康奈尔电影台词库训练的聊天机器人.
 
 # TODO:
-断点续训功能, 做到间断性训练.
-
-## Github 链接
-- [dumb-chatbot](https://github.com/Great-Li-Xin/dumb-chatbot)
-
-## 博客文章链接
-- [DUMB 聊天机器人](https://great-li-xin.github.io/2018/01/30/Dumb-Chatbot/)
+- [ ] 断点续训功能, 做到间断性训练.
+- [x] Migrate to Python3.
 
 ## Requirements
-- Python 2.7
+- Python 3.7
 - PyTorch 1.3.1
 - torchvision 0.4.2
 - festival (Linux Environment)
@@ -55,6 +50,7 @@ bot: yes .
 虽然能回答一些简单的问题, 但还是特别蠢.
 
 ## 参考文献
+- [seq2seq (Sequence to Sequence) Model for Deep Learning with PyTorch](https://www.guru99.com/seq2seq-model.html)
 - [PyTorch documentation](http://pytorch.org/docs/0.1.12/)
 - [seq2seq-translation](https://github.com/spro/practical-pytorch/tree/master/seq2seq-translation)
 - [tensorflow_chatbot](https://github.com/llSourcell/tensorflow_chatbot)

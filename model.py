@@ -37,7 +37,8 @@ class Seq2Seq(nn.Module):
         target_var, target_lens = target_group
         if target_var is None or target_lens is None:
             max_target_length = self.max_length
-            teacher_forcing_ratio = 0  # without teacher forcing
+            # without teacher forcing
+            teacher_forcing_ratio = 0
         else:
             max_target_length = max(target_lens)
 
