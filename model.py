@@ -132,7 +132,7 @@ class Encoder(nn.Module):
         # embedded size (max_len, batch_size, hidden_size)
         embedded = self.embedding(inputs_seqs)
         packed = pack_padded_sequence(embedded, input_lens)
-        outputs, hidden = self.gru(torch.tensor(packed), hidden)
+        outputs, hidden = self.gru(packed, hidden)
         outputs, output_lengths = pad_packed_sequence(outputs)
         if self.bidirectional:
             # sum bidirectional outputs

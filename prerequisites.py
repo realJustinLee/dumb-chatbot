@@ -56,4 +56,7 @@ def export_dialogue_corpus():
 
 
 if __name__ == '__main__':
-    export_dialogue_corpus()
+    try:
+        export_dialogue_corpus()
+    except KeyboardInterrupt as _:
+        print("You quit.")
