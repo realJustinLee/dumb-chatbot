@@ -13,7 +13,7 @@
   },
   "TRAIN": {
     "CUDA": false,
-    "N_EPOCHS": 80000,
+    "N_EPOCHS": 100000,
     "BATCH_SIZE": 64,
     "LEARNING_RATE": 0.0001,
     "TEACHER_FORCING_RATIO": 0.5,
@@ -31,6 +31,6 @@
   },
   "TEST": {
     "BOT_NAME": "bot",
-    "CHECKPOINT_EPOCH": 80000
+    "CHECKPOINT_EPOCH": 64000
   }
 }

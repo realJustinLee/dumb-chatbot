@@ -2,14 +2,7 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="ecfd1b54-34e0-43e3-ba65-938200f62446" name="Default" comment="">
-      <change afterPath="$PROJECT_DIR$/chatbot.py" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/masked_cross_entropy.py" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/model_utils.py" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/train.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/README.md" beforeDir="false" afterPath="$PROJECT_DIR$/README.md" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/model.py" beforeDir="false" afterPath="$PROJECT_DIR$/model.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/prerequisites.py" beforeDir="false" afterPath="$PROJECT_DIR$/prerequisites.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/config.json" beforeDir="false" afterPath="$PROJECT_DIR$/config.json" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -54,7 +47,7 @@
     <property name="nodejs_interpreter_path.stuck_in_default_project" value="undefined stuck path" />
     <property name="settings.editor.selected.configurable" value="com.jetbrains.python.configuration.PyActiveSdkModuleConfigurable" />
   </component>
-  <component name="RunManager" selected="Python.train">
+  <component name="RunManager" selected="Python.chatbot">
     <configuration name="chatbot" type="PythonConfigurationType" factoryName="Python" temporary="true">
       <module name="dumb-chatbot" />
       <option name="INTERPRETER_OPTIONS" value="" />
@@ -145,9 +138,9 @@
     </configuration>
     <recent_temporary>
       <list>
-        <item itemvalue="Python.train" />
         <item itemvalue="Python.chatbot" />
         <item itemvalue="Python.prerequisites" />
+        <item itemvalue="Python.train" />
         <item itemvalue="Python.preprocess" />
         <item itemvalue="Python.train" />
       </list>
@@ -183,6 +176,7 @@
       <workItem from="1575944561853" duration="3079000" />
       <workItem from="1576045033475" duration="2795000" />
       <workItem from="1576048592030" duration="1009000" />
+      <workItem from="1576776913585" duration="770000" />
     </task>
     <servers />
   </component>
@@ -190,49 +184,57 @@
     <option name="version" value="1" />
   </component>
   <component name="WindowStateProjectService">
-    <state width="1638" height="295" key="GridCell.Tab.0.bottom" timestamp="1576050194675">
-      <screen x="0" y="0" width="1680" height="1050" />
+    <state width="2518" height="386" key="GridCell.Tab.0.bottom" timestamp="1576777685048">
+      <screen x="0" y="23" width="2560" height="1348" />
     </state>
     <state width="2518" height="422" key="GridCell.Tab.0.bottom/0.0.1680.1050/-321.-1440.2560.1440/2239.-1791.1080.1920@-321.-1440.2560.1440" timestamp="1575608284038" />
     <state width="1038" height="582" key="GridCell.Tab.0.bottom/0.0.1680.1050/-321.-1440.2560.1440/2239.-1791.1080.1920@2239.-1791.1080.1920" timestamp="1575624543530" />
     <state width="1638" height="295" key="GridCell.Tab.0.bottom/0.0.1680.1050@0.0.1680.1050" timestamp="1576050194675" />
     <state width="1038" height="579" key="GridCell.Tab.0.bottom/0.23.1680.1027/-321.-1440.2560.1440/2239.-1791.1080.1920@2239.-1791.1080.1920" timestamp="1575611083105" />
     <state width="1638" height="257" key="GridCell.Tab.0.bottom/0.23.1680.959/-321.-1417.2560.1417/2239.-1768.1080.1897@0.23.1680.959" timestamp="1575597598796" />
-    <state width="1638" height="295" key="GridCell.Tab.0.center" timestamp="1576050194674">
-      <screen x="0" y="0" width="1680" height="1050" />
+    <state width="2518" height="386" key="GridCell.Tab.0.bottom/2560.-457.1080.1897/-1680.413.1680.1027/0.23.2560.1348@0.23.2560.1348" timestamp="1576777685048" />
+    <state width="2518" height="386" key="GridCell.Tab.0.center" timestamp="1576777685047">
+      <screen x="0" y="23" width="2560" height="1348" />
     </state>
     <state width="2518" height="422" key="GridCell.Tab.0.center/0.0.1680.1050/-321.-1440.2560.1440/2239.-1791.1080.1920@-321.-1440.2560.1440" timestamp="1575608284035" />
     <state width="1038" height="582" key="GridCell.Tab.0.center/0.0.1680.1050/-321.-1440.2560.1440/2239.-1791.1080.1920@2239.-1791.1080.1920" timestamp="1575624543528" />
     <state width="1638" height="295" key="GridCell.Tab.0.center/0.0.1680.1050@0.0.1680.1050" timestamp="1576050194674" />
     <state width="1038" height="579" key="GridCell.Tab.0.center/0.23.1680.1027/-321.-1440.2560.1440/2239.-1791.1080.1920@2239.-1791.1080.1920" timestamp="1575611083102" />
     <state width="1638" height="257" key="GridCell.Tab.0.center/0.23.1680.959/-321.-1417.2560.1417/2239.-1768.1080.1897@0.23.1680.959" timestamp="1575597598794" />
-    <state width="1638" height="295" key="GridCell.Tab.0.left" timestamp="1576050194673">
-      <screen x="0" y="0" width="1680" height="1050" />
+    <state width="2518" height="386" key="GridCell.Tab.0.center/2560.-457.1080.1897/-1680.413.1680.1027/0.23.2560.1348@0.23.2560.1348" timestamp="1576777685047" />
+    <state width="2518" height="386" key="GridCell.Tab.0.left" timestamp="1576777685046">
+      <screen x="0" y="23" width="2560" height="1348" />
     </state>
     <state width="2518" height="422" key="GridCell.Tab.0.left/0.0.1680.1050/-321.-1440.2560.1440/2239.-1791.1080.1920@-321.-1440.2560.1440" timestamp="1575608284034" />
     <state width="1038" height="582" key="GridCell.Tab.0.left/0.0.1680.1050/-321.-1440.2560.1440/2239.-1791.1080.1920@2239.-1791.1080.1920" timestamp="1575624543527" />
     <state width="1638" height="295" key="GridCell.Tab.0.left/0.0.1680.1050@0.0.1680.1050" timestamp="1576050194673" />
     <state width="1038" height="579" key="GridCell.Tab.0.left/0.23.1680.1027/-321.-1440.2560.1440/2239.-1791.1080.1920@2239.-1791.1080.1920" timestamp="1575611083100" />
     <state width="1638" height="257" key="GridCell.Tab.0.left/0.23.1680.959/-321.-1417.2560.1417/2239.-1768.1080.1897@0.23.1680.959" timestamp="1575597598793" />
-    <state width="1638" height="295" key="GridCell.Tab.0.right" timestamp="1576050194674">
-      <screen x="0" y="0" width="1680" height="1050" />
+    <state width="2518" height="386" key="GridCell.Tab.0.left/2560.-457.1080.1897/-1680.413.1680.1027/0.23.2560.1348@0.23.2560.1348" timestamp="1576777685046" />
+    <state width="2518" height="386" key="GridCell.Tab.0.right" timestamp="1576777685047">
+      <screen x="0" y="23" width="2560" height="1348" />
     </state>
     <state width="2518" height="422" key="GridCell.Tab.0.right/0.0.1680.1050/-321.-1440.2560.1440/2239.-1791.1080.1920@-321.-1440.2560.1440" timestamp="1575608284036" />
     <state width="1038" height="582" key="GridCell.Tab.0.right/0.0.1680.1050/-321.-1440.2560.1440/2239.-1791.1080.1920@2239.-1791.1080.1920" timestamp="1575624543529" />
     <state width="1638" height="295" key="GridCell.Tab.0.right/0.0.1680.1050@0.0.1680.1050" timestamp="1576050194674" />
     <state width="1038" height="579" key="GridCell.Tab.0.right/0.23.1680.1027/-321.-1440.2560.1440/2239.-1791.1080.1920@2239.-1791.1080.1920" timestamp="1575611083103" />
     <state width="1638" height="257" key="GridCell.Tab.0.right/0.23.1680.959/-321.-1417.2560.1417/2239.-1768.1080.1897@0.23.1680.959" timestamp="1575597598795" />
+    <state width="2518" height="386" key="GridCell.Tab.0.right/2560.-457.1080.1897/-1680.413.1680.1027/0.23.2560.1348@0.23.2560.1348" timestamp="1576777685047" />
     <state x="152" y="141" key="SettingsEditor" timestamp="1575944832025">
       <screen x="0" y="23" width="1680" height="958" />
     </state>
     <state x="2337" y="-1555" key="SettingsEditor/0.0.1680.1050/-321.-1440.2560.1440/2239.-1791.1080.1920@2239.-1791.1080.1920" timestamp="1575615146358" />
     <state x="152" y="141" key="SettingsEditor/0.23.1680.958@0.23.1680.958" timestamp="1575944832025" />
     <state x="341" y="141" key="SettingsEditor/0.23.1680.959/-321.-1417.2560.1417/2239.-1768.1080.1897@0.23.1680.959" timestamp="1575596904143" />
+    <state x="517" y="334" key="com.intellij.ide.util.TipDialog" timestamp="1576776931743">
+      <screen x="0" y="23" width="2560" height="1348" />
+    </state>
+    <state x="517" y="334" key="com.intellij.ide.util.TipDialog/2560.-457.1080.1897/-1680.413.1680.1027/0.23.2560.1348@0.23.2560.1348" timestamp="1576776931743" />
   </component>
   <component name="com.intellij.coverage.CoverageDataManagerImpl">
     <SUITE FILE_PATH="coverage/dumb_chatbot$train.coverage" NAME="train Coverage Results" MODIFIED="1576050194665" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$" />
-    <SUITE FILE_PATH="coverage/dumb_chatbot$prerequisites.coverage" NAME="prerequisites Coverage Results" MODIFIED="1576048304975" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$" />
-    <SUITE FILE_PATH="coverage/dumb_chatbot$chatbot.coverage" NAME="chatbot Coverage Results" MODIFIED="1576050183248" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$" />
+    <SUITE FILE_PATH="coverage/dumb_chatbot$prerequisites.coverage" NAME="prerequisites Coverage Results" MODIFIED="1576776952814" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$" />
+    <SUITE FILE_PATH="coverage/dumb_chatbot$chatbot.coverage" NAME="chatbot Coverage Results" MODIFIED="1576777614714" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$" />
     <SUITE FILE_PATH="coverage/dumb_chatbot$preprocess.coverage" NAME="preprocess Coverage Results" MODIFIED="1575622923876" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$" />
   </component>
 </project>
