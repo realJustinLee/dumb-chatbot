@@ -14,7 +14,7 @@ CHECKPOINT_PATH = config['TRAIN']['PATH']
 USE_CUDA = config['TRAIN']['CUDA']
 IMPORT_FROM_CUDA = config['LOADER']['IMPORT_FROM_CUDA']
 
-batch_size = config['TRAIN']['BATCH_SIZE']
+BATCH_SIZE = config['TRAIN']['BATCH_SIZE']
 
 questions = []
 with open('test_questions.txt') as question_file:
@@ -45,7 +45,7 @@ def model_evaluate(model, data_set, evaluate_num=10, auto_test=True):
     return total_loss / evaluate_num
 
 
-def build_model(vocab_size, load_checkpoint=False, checkpoint_epoch=-1):
+def build_model(vocab_size, load_checkpoint=False, checkpoint_epoch=-1, print_module=True):
     hidden_size = config['MODEL']['HIDDEN_SIZE']
     attn_method = config['MODEL']['ATTN_METHOD']
     num_encoder_layers = config['MODEL']['N_ENCODER_LAYERS']
@@ -58,7 +58,8 @@ def build_model(vocab_size, load_checkpoint=False, checkpoint_epoch=-1):
         max_length=config['LOADER']['MAX_LENGTH'],
         tie_weights=config['MODEL']['TIE_WEIGHTS']
     )
-    print(model)
+    if print_module:
+        print(model)
     if load_checkpoint is True and os.path.exists(CHECKPOINT_PATH) is True:
         # load checkpoint
         prefix = config['TRAIN']['PREFIX']

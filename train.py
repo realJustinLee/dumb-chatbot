@@ -13,30 +13,30 @@ with open('config.json') as config_file:
     config = json.load(config_file)
 USE_CUDA = config['TRAIN']['CUDA']
 
-n_epochs = config['TRAIN']['N_EPOCHS']
-batch_size = config['TRAIN']['BATCH_SIZE']
-clip = config['TRAIN']['CLIP']
-learning_rate = config['TRAIN']['LEARNING_RATE']
-teacher_forcing_ratio = config['TRAIN']['TEACHER_FORCING_RATIO']
+N_EPOCHS = config['TRAIN']['N_EPOCHS']
+BATCH_SIZE = config['TRAIN']['BATCH_SIZE']
+CLIP = config['TRAIN']['CLIP']
+LEARNING_RATE = config['TRAIN']['LEARNING_RATE']
+TEACHER_FORCING_RATIO = config['TRAIN']['TEACHER_FORCING_RATIO']
 
-print_every = 200
-save_every = print_every * 10
+PRINT_EVERY = 200
+SAVE_EVERY = PRINT_EVERY * 10
 
 
-def main():
-    data_set = build_data_loader(batch_size=batch_size)
+def train():
+    data_set = build_data_loader(batch_size=BATCH_SIZE)
     vocabulary_list = sorted(data_set.vocabulary.word2index.items(), key=lambda x: x[1])
     save_vocabulary(vocabulary_list)
     vocab_size = data_set.get_vocabulary_size()
     model = build_model(vocab_size)
-    model_optimizer = optim.Adam(model.parameters(), lr=learning_rate)
+    model_optimizer = optim.Adam(model.parameters(), lr=LEARNING_RATE)
 
     start = time.time()
     data_set_len = len(data_set)
     epoch = 0
     print_loss_total = 0.0
     print('Start Training.')
-    while epoch < n_epochs:
+    while epoch < N_EPOCHS:
         epoch += 1
         input_group, target_group = data_set.random_batch()
         # zero gradients
@@ -52,16 +52,16 @@ def main():
         )
         print_loss_total += loss.data
         loss.backward()
-        clip_grad_norm_(model.parameters(), clip)
+        clip_grad_norm_(model.parameters(), CLIP)
         # update parameters
         model_optimizer.step()
 
-        if epoch % print_every == 0:
+        if epoch % PRINT_EVERY == 0:
             test_loss = model_evaluate(model, data_set)
-            print_summary(start, epoch, math.exp(print_loss_total / print_every))
+            print_summary(start, epoch, math.exp(print_loss_total / PRINT_EVERY))
             print('Test PPL: %.4f' % math.exp(test_loss))
             print_loss_total = 0.0
-            if epoch % save_every == 0:
+            if epoch % SAVE_EVERY == 0:
                 save_model(model, epoch)
         # break
     save_model(model, epoch)
@@ -69,7 +69,7 @@ def main():
 
 def print_summary(start, epoch, print_ppl_avg):
     output_log = '%s (epoch: %d finish: %d%%) PPL: %.4f' % \
-                 (time_since(start, float(epoch) / n_epochs), epoch, float(epoch) / n_epochs * 100, print_ppl_avg)
+                 (time_since(start, float(epoch) / N_EPOCHS), epoch, float(epoch) / N_EPOCHS * 100, print_ppl_avg)
     print(output_log)
 
 
@@ -89,6 +89,6 @@ def time_since(since, percent):
 
 if __name__ == '__main__':
     try:
-        main()
+        train()
     except KeyboardInterrupt as _:
         print("You quit.")
