@@ -1,7 +1,13 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project version="4">
   <component name="ChangeListManager">
-    <list default="true" id="ecfd1b54-34e0-43e3-ba65-938200f62446" name="Default" comment="" />
+    <list default="true" id="ecfd1b54-34e0-43e3-ba65-938200f62446" name="Default" comment="">
+      <change beforePath="$PROJECT_DIR$/.idea/dumb-chatbot.iml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/dumb-chatbot.iml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/misc.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/misc.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/README.md" beforeDir="false" afterPath="$PROJECT_DIR$/README.md" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/requirements.txt" beforeDir="false" afterPath="$PROJECT_DIR$/requirements.txt" afterDir="false" />
+    </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
     <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
@@ -166,6 +172,7 @@
       </list>
     </recent_temporary>
   </component>
+  <component name="SpellCheckerSettings" RuntimeDictionaries="0" Folders="0" CustomDictionaries="0" DefaultDictionary="application-level" UseSingleDictionary="true" transferred="true" />
   <component name="SvnConfiguration">
     <configuration />
   </component>
@@ -190,55 +197,20 @@
       <workItem from="1579056475457" duration="2652000" />
       <workItem from="1580462588732" duration="147000" />
       <workItem from="1586691658520" duration="580000" />
+      <workItem from="1603349361736" duration="379000" />
+      <workItem from="1603438986709" duration="12000" />
+      <workItem from="1615744589666" duration="554000" />
     </task>
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
-    <option name="version" value="2" />
-  </component>
-  <component name="WindowStateProjectService">
-    <state width="2518" height="424" key="GridCell.Tab.0.bottom" timestamp="1586692238658">
-      <screen x="0" y="0" width="2560" height="1440" />
-    </state>
-    <state width="1638" height="294" key="GridCell.Tab.0.bottom/-1680.390.1680.1050/0.0.2560.1440/2560.-480.1080.1920@0.0.2560.1440" timestamp="1579093732046" />
-    <state width="1638" height="294" key="GridCell.Tab.0.bottom/0.0.1680.1050@0.0.1680.1050" timestamp="1579058896222" />
-    <state width="2518" height="424" key="GridCell.Tab.0.bottom/2560.-261.1080.1920/-1680.390.1680.1050/0.0.2560.1440@0.0.2560.1440" timestamp="1586692238658" />
-    <state width="2518" height="424" key="GridCell.Tab.0.center" timestamp="1586692238656">
-      <screen x="0" y="0" width="2560" height="1440" />
-    </state>
-    <state width="1638" height="294" key="GridCell.Tab.0.center/-1680.390.1680.1050/0.0.2560.1440/2560.-480.1080.1920@0.0.2560.1440" timestamp="1579093732044" />
-    <state width="1638" height="294" key="GridCell.Tab.0.center/0.0.1680.1050@0.0.1680.1050" timestamp="1579058896220" />
-    <state width="2518" height="424" key="GridCell.Tab.0.center/2560.-261.1080.1920/-1680.390.1680.1050/0.0.2560.1440@0.0.2560.1440" timestamp="1586692238656" />
-    <state width="2518" height="424" key="GridCell.Tab.0.left" timestamp="1586692238655">
-      <screen x="0" y="0" width="2560" height="1440" />
-    </state>
-    <state width="1638" height="294" key="GridCell.Tab.0.left/-1680.390.1680.1050/0.0.2560.1440/2560.-480.1080.1920@0.0.2560.1440" timestamp="1579093732042" />
-    <state width="1638" height="294" key="GridCell.Tab.0.left/0.0.1680.1050@0.0.1680.1050" timestamp="1579058896219" />
-    <state width="2518" height="424" key="GridCell.Tab.0.left/2560.-261.1080.1920/-1680.390.1680.1050/0.0.2560.1440@0.0.2560.1440" timestamp="1586692238655" />
-    <state width="2518" height="424" key="GridCell.Tab.0.right" timestamp="1586692238657">
-      <screen x="0" y="0" width="2560" height="1440" />
-    </state>
-    <state width="1638" height="294" key="GridCell.Tab.0.right/-1680.390.1680.1050/0.0.2560.1440/2560.-480.1080.1920@0.0.2560.1440" timestamp="1579093732045" />
-    <state width="1638" height="294" key="GridCell.Tab.0.right/0.0.1680.1050@0.0.1680.1050" timestamp="1579058896221" />
-    <state width="2518" height="424" key="GridCell.Tab.0.right/2560.-261.1080.1920/-1680.390.1680.1050/0.0.2560.1440@0.0.2560.1440" timestamp="1586692238657" />
-    <state x="781" y="359" key="SettingsEditor" timestamp="1586691726298">
-      <screen x="0" y="0" width="2560" height="1440" />
-    </state>
-    <state x="781" y="359" key="SettingsEditor/2560.-261.1080.1920/-1680.390.1680.1050/0.0.2560.1440@0.0.2560.1440" timestamp="1586691726298" />
-    <state x="339" y="242" key="com.intellij.ide.util.TipDialog" timestamp="1579056477680">
-      <screen x="0" y="0" width="1680" height="1050" />
-    </state>
-    <state x="339" y="242" key="com.intellij.ide.util.TipDialog/0.0.1680.1050@0.0.1680.1050" timestamp="1579056477680" />
-    <state x="100" y="100" width="1480" height="850" key="dock-window-1" timestamp="1579057632293">
-      <screen x="0" y="23" width="1680" height="958" />
-    </state>
-    <state x="100" y="100" width="1480" height="850" key="dock-window-1/0.23.1680.958@0.23.1680.958" timestamp="1579057632293" />
+    <option name="version" value="3" />
   </component>
   <component name="com.intellij.coverage.CoverageDataManagerImpl">
+    <SUITE FILE_PATH="coverage/dumb_chatbot$prerequisites.coverage" NAME="prerequisites Coverage Results" MODIFIED="1576776952814" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$" />
+    <SUITE FILE_PATH="coverage/dumb_chatbot$checkpoint_selector.coverage" NAME="checkpoint_selector Coverage Results" MODIFIED="1579058481778" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$" />
     <SUITE FILE_PATH="coverage/dumb_chatbot$chatbot.coverage" NAME="chatbot Coverage Results" MODIFIED="1586692191018" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$" />
     <SUITE FILE_PATH="coverage/dumb_chatbot$train.coverage" NAME="train Coverage Results" MODIFIED="1576050194665" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$" />
-    <SUITE FILE_PATH="coverage/dumb_chatbot$checkpoint_selector.coverage" NAME="checkpoint_selector Coverage Results" MODIFIED="1579058481778" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$" />
-    <SUITE FILE_PATH="coverage/dumb_chatbot$prerequisites.coverage" NAME="prerequisites Coverage Results" MODIFIED="1576776952814" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$" />
     <SUITE FILE_PATH="coverage/dumb_chatbot$preprocess.coverage" NAME="preprocess Coverage Results" MODIFIED="1575622923876" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$" />
   </component>
 </project>

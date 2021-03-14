@@ -6,9 +6,10 @@ DUMB 聊天机器人全称 Dumb Undereducated Maladroit Bot. 是使用 PyTorch �
 - [x] Migrate to Python3.
 
 ## Requirements
-- Python 3.7
-- PyTorch 1.3.1
-- torchvision 0.4.2
+- Python 3.9
+- PyTorch 1.8.0
+- torchaudio 0.8.8
+- torchvision 0.9.0
 - festival (Linux Environment)
 - say (macOS Environment)
 
