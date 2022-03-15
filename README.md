@@ -1,7 +1,7 @@
 # DUMB chatbot
 
 DUMB(Dumb Undereducated Maladroit Bot) chatbot, a chatbot implemented with PyTorch and trained
-with [Cornell Movie Dialogue](https://www.cs.cornell.edu/~cristian/Cornell_Movie-Dialogs_Corpus.html).
+with [Cornell Movie Dialogs Corpus](https://www.cs.cornell.edu/~cristian/Cornell_Movie-Dialogs_Corpus.html).
 
 # TODO:
 
@@ -19,7 +19,7 @@ with [Cornell Movie Dialogue](https://www.cs.cornell.edu/~cristian/Cornell_Movie
 
 ## Training Resource
 
-- [Cornell Movie Dialogue](https://www.cs.cornell.edu/~cristian/Cornell_Movie-Dialogs_Corpus.html)
+- [Cornell Movie Dialogs Corpus](https://www.cs.cornell.edu/~cristian/Cornell_Movie-Dialogs_Corpus.html)
 
 ## How to use
 
