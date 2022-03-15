@@ -103,6 +103,12 @@ venv.bak/
 # mypy
 .mypy_cache/
 
+# macOS
+.DS_Store
+
+#PyCharm
+.idea
+
 # Project specific
 checkpoint/*
 data/dialogue_corpus.txt
