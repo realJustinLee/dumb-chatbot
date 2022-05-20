@@ -31,7 +31,7 @@
   },
   "TEST": {
     "BOT_NAME": "bot",
-    "CHECKPOINT_EPOCH": 80000
+    "CHECKPOINT_EPOCH": 92000
   },
   "SELECTOR": {
     "MIN_EPOCH": 40000,
