@@ -11,9 +11,8 @@ with open('config.json') as config_file:
     config = json.load(config_file)
 
 CHECKPOINT_PATH = config['TRAIN']['PATH']
-USE_CUDA = config['TRAIN']['CUDA']
+DEVICE = torch.device(config['TRAIN']['DEVICE'])
 IMPORT_FROM_CUDA = config['LOADER']['IMPORT_FROM_CUDA']
-
 BATCH_SIZE = config['TRAIN']['BATCH_SIZE']
 
 questions = []
@@ -56,7 +55,7 @@ def build_model(vocab_size, load_checkpoint=False, checkpoint_epoch=-1, print_mo
         encoder=encoder,
         decoder=decoder,
         max_length=config['LOADER']['MAX_LENGTH'],
-        tie_weights=config['MODEL']['TIE_WEIGHTS']
+        tie_weights=config['MODEL']['TIE_WEIGHTS'],
     )
     if print_module:
         print(model)
@@ -89,8 +88,8 @@ def build_model(vocab_size, load_checkpoint=False, checkpoint_epoch=-1, print_mo
     # print('Seq2Seq parameters:')
     # for name, param in model.state_dict().items():
     #     print(name, param.size())
-    if USE_CUDA:
-        model = model.cuda()
+    if DEVICE != "cpu":
+        model = model.to(device=DEVICE)
     return model
 
 
@@ -141,7 +140,7 @@ class BotAgent(object):
         decoder_output = decoder_output.squeeze(1)
         top_v, top_i = decoder_output.data.topk(1, dim=1)
         top_i = top_i.squeeze(1)
-        if USE_CUDA:
+        if DEVICE != "cpu":
             predict_resp = top_i.cpu().numpy()
         else:
             predict_resp = top_i.numpy()
@@ -163,9 +162,7 @@ class BotAgent(object):
         # append EOS token
         words_index.append(EOS_token)
         if len(words_index) > 0:
-            input_var = torch.tensor([words_index]).transpose(0, 1)
-            if USE_CUDA:
-                input_var = input_var.cuda()
+            input_var = torch.tensor([words_index], device=DEVICE).transpose(0, 1)
             # input_var size (length, 1)
             return input_var
         return None

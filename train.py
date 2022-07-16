@@ -11,7 +11,6 @@ from model_utils import build_model, save_model, model_evaluate, save_vocabulary
 
 with open('config.json') as config_file:
     config = json.load(config_file)
-USE_CUDA = config['TRAIN']['CUDA']
 
 N_EPOCHS = config['TRAIN']['N_EPOCHS']
 BATCH_SIZE = config['TRAIN']['BATCH_SIZE']

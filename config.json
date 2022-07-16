@@ -9,12 +9,12 @@
     "MIN_LENGTH": 1,
     "MAX_LENGTH": 30,
     "MIN_COUNT": 2,
-    "IMPORT_FROM_CUDA": true
+    "IMPORT_FROM_CUDA": false
   },
   "TRAIN": {
-    "CUDA": false,
+    "DEVICE": "cpu",
     "N_EPOCHS": 100000,
-    "BATCH_SIZE": 64,
+    "BATCH_SIZE": 128,
     "LEARNING_RATE": 0.0001,
     "TEACHER_FORCING_RATIO": 0.5,
     "CLIP": 5,

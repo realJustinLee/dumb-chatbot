@@ -12,7 +12,8 @@ from custom_token import *
 
 with open('config.json') as config_file:
     config = json.load(config_file)
-USE_CUDA = config['TRAIN']['CUDA']
+
+DEVICE = torch.device(config['TRAIN']['DEVICE'])
 
 
 class Seq2Seq(nn.Module):
@@ -22,9 +23,9 @@ class Seq2Seq(nn.Module):
         self.decoder = decoder
         self.max_length = max_length
 
-        if USE_CUDA:
-            self.encoder.cuda()
-            self.decoder.cuda()
+        if DEVICE != "cpu":
+            self.encoder.to(device=DEVICE)
+            self.decoder.to(device=DEVICE)
 
         if tie_weights:
             self.decoder.embedding.weight = self.encoder.embedding.weight
@@ -43,12 +44,9 @@ class Seq2Seq(nn.Module):
             max_target_length = max(target_lens)
 
         # store all decoder outputs
-        all_decoder_outputs = torch.zeros(max_target_length, batch_size, self.decoder.output_size)
+        all_decoder_outputs = torch.zeros(max_target_length, batch_size, self.decoder.output_size, device=DEVICE)
         # first decoder input
-        decoder_input = torch.tensor([GO_token] * batch_size, requires_grad=False)
-        if USE_CUDA:
-            all_decoder_outputs = all_decoder_outputs.cuda()
-            decoder_input = decoder_input.cuda()
+        decoder_input = torch.tensor([GO_token] * batch_size, requires_grad=False, device=DEVICE)
         decoder_hidden = encoder_hidden[:self.decoder.num_layers]
         for t in range(max_target_length):
             decoder_output, decoder_hidden, decoder_attn = \
@@ -88,7 +86,8 @@ class Attn(nn.Module):
             self.attn = nn.Linear(self.hidden_size, self.hidden_size)
         elif self.method == 'concat':
             self.attn = nn.Linear(self.hidden_size * 2, self.hidden_size)
-            self.v = nn.Parameter(weight_init.xavier_uniform(torch.tensor(1, self.hidden_size)), requires_grad=False)
+            self.v = nn.Parameter(weight_init.xavier_uniform(torch.tensor(1, self.hidden_size, device=DEVICE)),
+                                  requires_grad=False)
 
     def forward(self, hidden, encoder_outputs):
         attn_energies = self.batch_score(hidden, encoder_outputs)
@@ -124,9 +123,8 @@ class Encoder(nn.Module):
         self.bidirectional = bidirectional
 
         self.embedding = nn.Embedding(input_size, hidden_size)
-        self.gru = nn.GRU(hidden_size, hidden_size, num_layers, dropout=dropout, bidirectional=bidirectional)
-        if USE_CUDA:
-            self.gru = self.gru.cuda()
+        self.gru = nn.GRU(hidden_size, hidden_size, num_layers, dropout=dropout, bidirectional=bidirectional,
+                          device=DEVICE)
 
     def forward(self, inputs_seqs, input_lens, hidden=None):
         # embedded size (max_len, batch_size, hidden_size)
@@ -151,13 +149,9 @@ class Decoder(nn.Module):
         self.dropout = dropout
 
         self.embedding = nn.Embedding(output_size, hidden_size)
-        self.gru = nn.GRU(hidden_size, hidden_size, num_layers, dropout=dropout)
-        self.concat = nn.Linear(hidden_size * 2, hidden_size)
-        self.out = nn.Linear(hidden_size, output_size)
-        if USE_CUDA:
-            self.gru = self.gru.cuda()
-            self.concat = self.concat.cuda()
-            self.out = self.out.cuda()
+        self.gru = nn.GRU(hidden_size, hidden_size, num_layers, dropout=dropout, device=DEVICE)
+        self.concat = nn.Linear(hidden_size * 2, hidden_size, device=DEVICE)
+        self.out = nn.Linear(hidden_size, output_size, device=DEVICE)
 
         self.attn = Attn(attn_method, hidden_size)
 

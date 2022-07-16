@@ -41,6 +41,25 @@ Configs are stored in `config.json`.
 Model Training could be time-consuming. I would strongly recommend enabling CUDA in `config.json` to accelerate the
 whole training process.
 
+```json
+{
+  "TRAIN": {
+    "DEVICE": "cuda",
+    ...
+  }
+}
+```
+
+And if you are using Apple Silicon GPUs, do the following:
+```json
+{
+  "TRAIN": {
+    "DEVICE": "mps",
+    ...
+  }
+}
+```
+
 ### Testing and Running
 
 ``` bash

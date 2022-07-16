@@ -7,7 +7,7 @@ from torch.nn import functional
 with open('config.json') as config_file:
     config = json.load(config_file)
 
-USE_CUDA = config['TRAIN']['CUDA']
+DEVICE = torch.device(config['TRAIN']['DEVICE'])
 
 
 def sequence_mask(sequence_length, max_len=None):
@@ -17,17 +17,15 @@ def sequence_mask(sequence_length, max_len=None):
     seq_range = torch.arange(0, max_len).long()
     seq_range_expand = seq_range.unsqueeze(0).expand(batch_size, max_len)
     seq_range_expand = seq_range_expand.clone().detach()
-    if sequence_length.is_cuda:
-        seq_range_expand = seq_range_expand.cuda()
+    seq_range_expand = seq_range_expand.to(device=sequence_length.device)
     seq_length_expand = (sequence_length.unsqueeze(1)
                          .expand_as(seq_range_expand))
     return torch.lt(seq_range_expand, seq_length_expand)
 
 
 def masked_cross_entropy(logic, target, length):
-    length = torch.tensor(length)
-    if USE_CUDA:
-        length = length.cuda()
+    length = torch.tensor(length, device=DEVICE)
+
     """
     Args:
         logic: A Variable containing a FloatTensor of size
