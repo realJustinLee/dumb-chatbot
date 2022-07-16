@@ -88,7 +88,7 @@ def build_model(vocab_size, load_checkpoint=False, checkpoint_epoch=-1, print_mo
     # print('Seq2Seq parameters:')
     # for name, param in model.state_dict().items():
     #     print(name, param.size())
-    if DEVICE != "cpu":
+    if DEVICE != torch.device("cpu"):
         model = model.to(device=DEVICE)
     return model
 
@@ -140,7 +140,7 @@ class BotAgent(object):
         decoder_output = decoder_output.squeeze(1)
         top_v, top_i = decoder_output.data.topk(1, dim=1)
         top_i = top_i.squeeze(1)
-        if DEVICE != "cpu":
+        if DEVICE != torch.device("cpu"):
             predict_resp = top_i.cpu().numpy()
         else:
             predict_resp = top_i.numpy()

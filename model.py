@@ -23,7 +23,7 @@ class Seq2Seq(nn.Module):
         self.decoder = decoder
         self.max_length = max_length
 
-        if DEVICE != "cpu":
+        if DEVICE != torch.device("cpu"):
             self.encoder.to(device=DEVICE)
             self.decoder.to(device=DEVICE)
 
