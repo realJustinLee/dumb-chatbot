@@ -130,3 +130,7 @@ dmypy.json
 
 .idea
 .DS_Store
+
+# Project specific
+checkpoint/*
+data/dialogue_corpus.txt

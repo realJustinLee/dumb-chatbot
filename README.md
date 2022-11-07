@@ -10,10 +10,10 @@ with [Cornell Movie Dialogs Corpus](https://www.cs.cornell.edu/~cristian/Cornell
 
 ## Requirements
 
-- Python 3.9
-- PyTorch 1.11.0
-- torchaudio 0.11.0
-- torchvision 0.12.0
+- Python 3.10
+- PyTorch 1.13.0
+- torchaudio 0.13.0
+- torchvision 0.14.0
 - festival (Linux Environment)
 - say (macOS Environment)
 
@@ -26,7 +26,7 @@ with [Cornell Movie Dialogs Corpus](https://www.cs.cornell.edu/~cristian/Cornell
 ### Data Laundry
 
 ``` bash
-python3 preprocess.py
+python3 prerequisites.py
 ```
 
 The script would create `dialogue_corpus.txt` under `./data`.
@@ -51,6 +51,7 @@ whole training process.
 ```
 
 And if you are using Apple Silicon GPUs, do the following:
+
 ```json
 {
   "TRAIN": {
