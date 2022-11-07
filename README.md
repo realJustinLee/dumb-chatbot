@@ -3,6 +3,11 @@
 DUMB(Dumb Undereducated Maladroit Bot) chatbot, a chatbot implemented with PyTorch and trained
 with [Cornell Movie Dialogs Corpus](https://www.cs.cornell.edu/~cristian/Cornell_Movie-Dialogs_Corpus.html).
 
+# CAUTION
+
+**Under current support situation of PyTorch, MPS devices (commonly known as Apple Silicon GPU) suffer from extreme slow
+training, so just don't train with them now.**
+
 # TODO:
 
 - [ ] Breakpoint continuous training to achieve intermittent training.
