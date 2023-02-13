@@ -16,9 +16,9 @@ training, so just don't train with them now.**
 ## Requirements
 
 - Python 3.10
-- PyTorch 1.13.0
-- torchaudio 0.13.0
-- torchvision 0.14.0
+- PyTorch 1.13.1
+- torchaudio 0.13.1
+- torchvision 0.14.1
 - festival (Linux Environment)
 - say (macOS Environment)
 
