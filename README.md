@@ -15,10 +15,10 @@ training, so just don't train with them now.**
 
 ## Requirements
 
-- Python 3.10
-- PyTorch 1.13.1
-- torchaudio 0.13.1
-- torchvision 0.14.1
+- Python 3.12.6
+- PyTorch 2.4.1
+- torchaudio 2.4.1
+- torchvision 0.19.1
 - festival (Linux Environment)
 - say (macOS Environment)
 
@@ -99,4 +99,4 @@ Though it could answer some questions, it's still dumb enough.
 
 # Made with ❤ by [Justin Lee](https://github.com/realJustinLee)!
 
-™ and © 1997-2022 Justin Lee. All Rights Reserved. [License Agreement](./LICENSE)
+™ and © 1997-2024 Justin Lee. All Rights Reserved. [License Agreement](./LICENSE)
