@@ -49,8 +49,7 @@ whole training process.
 ```json
 {
   "TRAIN": {
-    "DEVICE": "cuda",
-    ...
+    "DEVICE": "cuda"
   }
 }
 ```
@@ -60,8 +59,7 @@ And if you are using Apple Silicon GPUs, do the following:
 ```json
 {
   "TRAIN": {
-    "DEVICE": "mps",
-    ...
+    "DEVICE": "mps"
   }
 }
 ```
