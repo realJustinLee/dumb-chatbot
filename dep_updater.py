@@ -1,6 +1,10 @@
-import pkg_resources
-from subprocess import call
+from importlib.metadata import distributions
+import subprocess
+import sys
 
-if __name__ == '__main__':
-    packages = [dist.project_name for dist in pkg_resources.working_set]
-    call("pip3 install --upgrade " + ' '.join(packages), shell=True)
+packages = [dist.metadata["Name"] for dist in distributions()]
+
+subprocess.run(
+    [sys.executable, "-m", "pip", "install", "--upgrade", *packages],
+    check=True
+)
